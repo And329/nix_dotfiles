@@ -30,10 +30,7 @@
     libinput.enable = true;
   };
 
-  # Audio provider
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  # For PipeWire (recommended for NixOS 25.05+)
+  # Audio provider (PipeWire is recommended for NixOS 25.05+)
   services.pipewire = {
     enable = true;
     audio.enable = true;
