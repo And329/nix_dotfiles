@@ -39,9 +39,9 @@
     jack.enable = true;
   };
 
-  # Boot loader (required for NixOS to boot)
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda"; # Change this if your disk is different
+  # Boot loader (UEFI, systemd-boot)
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "25.05";
 }
