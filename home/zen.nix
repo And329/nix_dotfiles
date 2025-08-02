@@ -2,6 +2,8 @@
 
 {
   home.username = "zen";
+
+  xdg.configFile."i3status-rust/config.toml".source = "${config.xdg.configHome}/i3status-rust/config-default.toml";
   home.homeDirectory = "/home/zen";
 
   programs.zsh.enable = true;
