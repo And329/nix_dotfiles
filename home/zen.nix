@@ -39,7 +39,7 @@
     };
   };
 
-  home.activation.i3statusRustConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.i3statusRustConfig = config.lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ -f "$HOME/.config/i3status-rust/config-default.toml" ]; then
       cp "$HOME/.config/i3status-rust/config-default.toml" "$HOME/.config/i3status-rust/config.toml"
     fi
