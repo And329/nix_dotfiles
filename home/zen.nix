@@ -34,7 +34,9 @@
           { block = "time"; interval = 60; format = "%a %d/%m %R"; }
         ];
         settings = {
-          theme = "solarized-dark";
+          theme = {
+            name = "solarized-dark";
+          };
         };
       };
     };
