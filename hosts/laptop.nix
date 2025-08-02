@@ -20,6 +20,7 @@
     vim git wget curl
     firefox
     pavucontrol
+    neofetch
   ];
 
   # X Server configuration
