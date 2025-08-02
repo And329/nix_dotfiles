@@ -17,10 +17,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim git wget curl
+    vim
+    git
+    wget
+    curl
     firefox
     pavucontrol
     neofetch
+    i3status-rust
   ];
 
   # X Server configuration
