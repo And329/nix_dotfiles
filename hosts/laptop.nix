@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./hardware-configuration.nix
     ../modules/i3.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-  networking.hostName = "nixos-desktop";
+  networking.hostName = "laptop";
   time.timeZone = "Europe/Moscow";
 
   users.users.zen = {
@@ -18,18 +18,33 @@
 
   environment.systemPackages = with pkgs; [
     vim git wget curl
+    firefox
+    pavucontrol
   ];
 
   # X Server configuration
   services.xserver = {
     enable = true;
-    # Disable default GNOME desktop
     desktopManager.gnome.enable = false;
-    # Disable default xterm
     desktopManager.xterm.enable = false;
-    # Enable touchpad support
     libinput.enable = true;
   };
+
+  # Audio provider
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  # For PipeWire (recommended for NixOS 25.05+)
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    jack.enable = true;
+  };
+
+  # Boot loader (required for NixOS to boot)
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda"; # Change this if your disk is different
 
   system.stateVersion = "25.05";
 }
