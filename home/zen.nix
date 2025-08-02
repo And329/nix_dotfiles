@@ -3,7 +3,7 @@
 {
   home.username = "zen";
 
-  xdg.configFile."i3status-rust/config.toml".source = "${config.xdg.configHome}/i3status-rust/config-default.toml";
+
   home.homeDirectory = "/home/zen";
 
   programs.zsh.enable = true;
@@ -32,8 +32,9 @@
           { block = "time"; interval = 60; format = "%a %d/%m %R"; }
         ];
         settings = {
-          theme = "solarized-dark";
-        };
+        theme = "solarized-dark";
+      };
+      target = "config.toml";
       };
     };
   };
