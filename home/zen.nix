@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  # User settings
   home.username = "zen";
-
-
   home.homeDirectory = "/home/zen";
+  home.stateVersion = "25.05";
 
+  # Shell and git
   programs.zsh.enable = true;
   programs.git = {
     enable = true;
@@ -13,6 +14,7 @@
     userEmail = "329@riseup.net";
   };
 
+  # i3status-rust configuration
   programs.i3status-rust = {
     enable = true;
     bars = {
@@ -32,18 +34,17 @@
           { block = "time"; interval = 60; format = "%a %d/%m %R"; }
         ];
         settings = {
-        theme = "solarized-dark";
-      };
-    
+          theme = "solarized-dark";
+        };
       };
     };
   };
 
-  home.activation.i3statusRustConfig = config.lib.hm.dag.entryAfter ["writeBoundary"] ''
+  # Workaround: ensure i3status-rust config.toml is always generated
+  # Home-manager only creates config-default.toml, so copy it after activation
+  home.activation.i3statusRustConfig = config.lib.dag.entryAfter ["writeBoundary"] ''
     if [ -f "$HOME/.config/i3status-rust/config-default.toml" ]; then
       cp "$HOME/.config/i3status-rust/config-default.toml" "$HOME/.config/i3status-rust/config.toml"
     fi
   '';
-
-  home.stateVersion = "25.05";
 }
