@@ -16,6 +16,9 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
 
+  # Enable NetworkManager for network management
+  networking.networkmanager.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -24,7 +27,12 @@
     firefox
     pavucontrol
     neofetch
-    i3status-rust
+    # Calendar app for i3status-rs
+    gnome-calendar
+    # Additional useful tools
+    htop
+    tree
+    unzip
   ];
 
   # X Server configuration

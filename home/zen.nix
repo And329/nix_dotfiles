@@ -15,31 +15,9 @@
   };
 
   # i3status-rust configuration
-  programs.i3status-rust = {
+  programs.i3status-rs = {
     enable = true;
-    bars = {
-      default = {
-        blocks = [
-          {
-            block = "disk_space";
-            path = "/";
-            info_type = "available";
-            interval = 60;
-            warning = 20.0;
-            alert = 10.0;
-          }
-          { block = "memory"; }
-          { block = "cpu"; interval = 1; }
-          { block = "load"; interval = 1; }
-          { block = "time"; interval = 60; format = "%a %d/%m %R"; }
-        ];
-        settings = {
-          theme = {
-            name = "solarized-dark";
-          };
-        };
-      };
-    };
+    configFile = ./i3status-rs.toml;
   };
 
 }

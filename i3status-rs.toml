@@ -1,0 +1,93 @@
+# i3status-rs configuration
+# This file contains the status bar configuration for i3wm
+
+# Theme configuration
+[theme]
+name = "solarized-dark"
+
+# Icons configuration (optional)
+[icons]
+name = "awesome4"
+
+# ============================================================================
+# SYSTEM MONITORING BLOCKS
+# ============================================================================
+
+# Disk space monitoring
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+interval = 60
+warning = 20.0
+alert = 10.0
+format = " $icon $available "
+
+# Memory usage
+[[block]]
+block = "memory"
+format = " $icon $mem_used_percents "
+interval = 5
+warning_mem = 80.0
+critical_mem = 95.0
+
+# CPU usage
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $utilization "
+
+# System load average
+[[block]]
+block = "load"
+interval = 1
+format = " $icon $1m "
+
+# ============================================================================
+# NETWORK & CONNECTIVITY
+# ============================================================================
+
+# Network interface (auto-detect wireless interface)
+[[block]]
+block = "net"
+# Remove interface line to auto-detect, or use "wlp*" pattern for wireless
+format = " $icon {$signal_strength $ssid} $speed_down.eng(prefix:K) $speed_up.eng(prefix:K) "
+interval = 5
+
+# ============================================================================
+# AUDIO & MEDIA
+# ============================================================================
+
+# Volume control
+[[block]]
+block = "sound"
+format = " $icon $volume "
+click = [
+    { button = "left", cmd = "pavucontrol" },
+    { button = "right", cmd = "pactl set-sink-mute @DEFAULT_SINK@ toggle" }
+]
+
+# ============================================================================
+# POWER & BATTERY (uncomment if you have a laptop)
+# ============================================================================
+
+# Battery status (enabled for laptop)
+[[block]]
+block = "battery"
+interval = 60
+format = " $icon $percentage $time "
+warning = 30.0
+critical = 15.0
+
+# ============================================================================
+# DATE & TIME
+# ============================================================================
+
+# Date and time
+[[block]]
+block = "time"
+interval = 60
+format = " $icon %a %d/%m %R "
+click = [
+    { button = "left", cmd = "gnome-calendar" }
+]
