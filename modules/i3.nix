@@ -102,7 +102,7 @@
       bars = [
         {
           position = "top";
-          statusCommand = "i3status-rs ~/.config/i3status-rust/config.toml";
+          statusCommand = "i3status-rs /home/zen/nix_dotfiles/i3status-rs.toml";
           fonts = {
             names = [ "FiraCode Nerd Font" ];
             size = 10.0;
