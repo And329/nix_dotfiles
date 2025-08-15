@@ -3,6 +3,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
+    # This will be copied from /etc/nixos/hardware-configuration.nix during installation
     ./hardware-configuration.nix
   ];
 

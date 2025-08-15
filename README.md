@@ -27,22 +27,39 @@ A modern NixOS configuration using flakes and home-manager with i3 window manage
 
 ## Installation
 
-1. **Generate hardware configuration**:
+### On Existing NixOS System
+
+1. **Clone the repository**:
    ```bash
-   sudo nixos-generate-config --root /mnt
-   cp /mnt/etc/nixos/hardware-configuration.nix hosts/
+   git clone https://github.com/And329/nix_dotfiles.git
+   cd nix_dotfiles
    ```
 
-2. **Build and switch**:
+2. **Copy hardware configuration**:
+   ```bash
+   sudo cp /etc/nixos/hardware-configuration.nix hosts/
+   ```
+
+3. **Build and switch**:
    ```bash
    sudo nixos-rebuild switch --flake .#laptop
    ```
 
-3. **Copy i3status-rust config**:
+4. **Copy i3status-rust config**:
    ```bash
    mkdir -p ~/.config/i3status-rust
    cp i3status-rs.toml ~/.config/i3status-rust/config.toml
    ```
+
+### Fresh NixOS Installation
+
+1. **Boot NixOS installer and partition drives**
+2. **Mount filesystems to /mnt**
+3. **Generate hardware config**: `sudo nixos-generate-config --root /mnt`
+4. **Clone repo**: `cd /mnt/etc/nixos && sudo git clone https://github.com/And329/nix_dotfiles.git .`
+5. **Copy hardware config**: `sudo cp hardware-configuration.nix hosts/`
+6. **Install**: `sudo nixos-install --flake .#laptop`
+7. **Set passwords and reboot**
 
 ## Key Bindings
 

@@ -33,6 +33,8 @@
     tree
     unzip
     zip
+    # Font for terminal and i3
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
   # Alacritty terminal configuration
@@ -75,8 +77,8 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "zen";
-    userEmail = "zen@example.com";
+    userName = "And329";
+    userEmail = "329@riseup.net";
   };
 
   # Bash configuration
