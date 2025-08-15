@@ -34,7 +34,7 @@
     unzip
     zip
     # Font for terminal and i3
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 
   # Alacritty terminal configuration
