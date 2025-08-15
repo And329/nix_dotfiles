@@ -7,14 +7,9 @@
     ./hardware-configuration.nix
   ];
 
-  # Bootloader - Use GRUB as fallback if systemd-boot fails
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    useOSProber = true;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader - Skip bootloader installation for now
+  boot.loader.grub.enable = false;
+  boot.loader.systemd-boot.enable = false;
 
   # Networking
   networking.hostName = "laptop";
