@@ -7,8 +7,13 @@
     ./hardware-configuration.nix
   ];
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = true;
+  # Bootloader - Use GRUB as fallback if systemd-boot fails
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
@@ -52,7 +57,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
